@@ -53,6 +53,10 @@
   {% include '_third-party/quicklink.swig' %}
 
   {{- next_inject('bodyEnd') }}
+
+  {% include '_my/audio.swig' %}
+  <script type="text/javascript" src="/js/custom.js"></script>
+  
   {%- if theme.pjax %}
     </div>
   {%- endif %}
