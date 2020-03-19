@@ -45,7 +45,12 @@
           {%- set date_diff = date(post.date) != date(post.updated) %}
           {%- set time_diff = time(post.date) != time(post.updated) %}
           {%- set datetime_diff = date_diff or time_diff %}
-
+		  
+          {% if post.top %}
+              <i class="fa fa-thumb-tack"></i>
+              <span class="post-meta-divider">|</span>
+          {% endif %}
+		  
           {%- if theme.post_meta.created_at %}
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -82,7 +87,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">{{ __('post.in') }}</span>
+              <span class="post-meta-item-text">{{ __('post.in') + __('symbol.colon') }}</span>
               {%- for cat in post.categories.toArray() %}
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="{{ url_for(cat.path) }}" itemprop="url" rel="index"><span itemprop="name">{{ cat.name }}</span></a>
@@ -90,7 +95,7 @@
 
                 {%- set cat_length = post.categories.length %}
                 {%- if cat_length > 1 and loop.index !== cat_length %}
-                  {{ __('symbol.comma') }}
+                  <span> > </span>
                 {%- endif %}
               {%- endfor %}
             </span>

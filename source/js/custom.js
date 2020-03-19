@@ -1,44 +1,5 @@
 // 对 Next 主题进行定制
 
-//MathJax
-/* window.MathJax = {
-    AuthorInit: function () {
-      MathJax.Hub.Register.StartupHook("Begin",function () {
-        MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-    });
-      });
-    }
-  };
-window.MathJax = {
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-  };
-//  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-// jQuery
-$.getScript('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function()
-{
-    // script is now loaded and executed.
-    // put your dependent JS here.
-}); */
-
-
-// 特定段落(标志 ooNoIndent00)不缩进
-$('p:contains("ooNoIndent00")').each(function() {
-	var str = $(this).text();
-	if (str.match("^ooNoIndent00")) {
-		var text = $(this).html();
-		$(this).css('text-indent', '0em');
-		$(this).html(text.replace('ooNoIndent00', '')); 
-	}
-});
-
 // 函数: html 中去掉 某 tag 最后那一次出现
 var rmLastElm = function(text, selector) {
     var wrapped = $("<div>" + text + "</div>");
